@@ -18,7 +18,27 @@ Route::get('/', function () {
 });
 
 Auth::routes([
-    'register' => false
+'register' => false
 ]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//hanya untuk admin
+Route::group(['prefix' => 'admin', 'middleware' =>['auth', 'role::admin']], function(){
+    Route::get('/', function(){
+        return 'Halaman Admin';
+    });
+    Route::get('profi', function(){
+        return 'Halaman Profil Admin';
+    });
+});
+
+//hanya untuk pengguna
+Route::group(['prefix' => 'pengguna', 'middleware' =>['auth', 'role::pengguna']], function(){
+    Route::get('/', function(){
+        return 'halaman pengguna';
+    });
+    Route::get('profi', function(){
+        return 'Halaman Profil Pengguna';
+    });
+});

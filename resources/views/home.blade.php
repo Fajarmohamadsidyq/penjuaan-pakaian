@@ -13,7 +13,13 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @role('admin')
+                    <p>This is visibe to users with the admin role, Gets translated to \Larateust::hasRole(Admin)</p>
+                    @endrole
 
+                    @role('pengguna')
+                    <p>This is visibe to users with the admin role, Gets translated to \Larateust::hasRole(Pengguna)</p>
+                    @endrole
                     {{ __('You are logged in!') }}
                 </div>
             </div>
