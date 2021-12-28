@@ -10,7 +10,7 @@ Dashboard
 
 @section('content')
 
-Halaman Buku
+Halaman Sepatu
 
 @stop
 

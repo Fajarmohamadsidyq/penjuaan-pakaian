@@ -247,19 +247,26 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text' => 'buku',
-            'url'  => 'admin/buku',
-            'icon' => 'far fa-fw fa-file'
+            'text' => 'profile',
+            'url'  => 'admin/profil',
+            'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'pengarang',
-            'url'  => 'admin/pengarang',
-            'icon' => 'far fa-fw fa-file'
+            'text' => 'Keranjang',
+            'url'  => 'admin/keranjang',
+            'icon' => 'fas fa-shopping-cart',
         ],
         [
-            'text' => 'menu lainnya',
-            'url'  => '#',
-            'icon' => 'far fa-fw fa-file'
+            'text' => 'Baju',
+            'url'  => 'pakaian',
+        ],
+        [
+            'text' => 'Merk',
+            'url'  => 'merk',
+        ],
+        [
+            'text' => 'sepatu',
+            'url'  => 'admin/sepatu',
         ],
     ],
 

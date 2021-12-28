@@ -10,7 +10,7 @@ Dashboard
 
 @section('content')
 
-Halaman pengarang
+Halaman Ceana
 
 @stop
 

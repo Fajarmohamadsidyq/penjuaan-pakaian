@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MerkController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,13 +36,19 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //});
 
 Route::group(['prefix' => 'admin', 'middleware' =>['auth']], function(){
-    Route::get('buku', function(){
-        return view('buku.index');
+    Route::get('profil', function(){
+        return view('profil.index');
     })->middleware(['role:admin|pengguna']);
-    Route::get('pengarang', function(){
-        return view('pengarang.index');
-    })->middleware(['role:admin']);
+    Route::get('keranjang', function(){
+        return view('keranjang.index');
+    })->middleware(['role:admin|pengguna']);
 });
+
+Route::resource('pakaian', PakaianController::class);
+Route::resource('merk', MerkController::class);
+
+
+
 
 //hanya untuk pengguna
 //Route::group(['prefix' => 'pengguna', 'middleware' =>['auth', 'role::pengguna']], function(){
