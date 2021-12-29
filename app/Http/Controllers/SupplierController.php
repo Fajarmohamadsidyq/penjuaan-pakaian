@@ -36,8 +36,9 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-         $request->validate([
-            'nama' => 'required|unique:suppliers',
+        // validasi data
+        $validate = $request->validate([
+            'nama' => 'required',
             'alamat' => 'required',
             'no_tlpn' => 'required',
         ]);
@@ -56,9 +57,9 @@ class SupplierController extends Controller
      * @param  \App\Models\supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function show(supplier $supplier)
+    public function show($id)
     {
-        $supplier = supplier::all();
+        $supplier = supplier::findOrFail($id);
         return view('supplier.show', compact('supplier'));
     }
 
@@ -68,9 +69,9 @@ class SupplierController extends Controller
      * @param  \App\Models\supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function edit(supplier $supplier)
+    public function edit($id)
     {
-        $supplier = supplier::all();
+        $supplier = supplier::findOrFail($id);
         return view('supplier.edit', compact('supplier'));
     }
 
@@ -81,7 +82,7 @@ class SupplierController extends Controller
      * @param  \App\Models\supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, supplier $supplier)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'nama' => 'required',
@@ -89,7 +90,7 @@ class SupplierController extends Controller
             'no_tlpn' => 'required',
         ]);
 
-        $supplier = supplier::findOrFail($supplier);
+        $supplier = supplier::findOrFail($id);
         $supplier->nama = $request->nama;
         $supplier->alamat = $request->alamat;
         $supplier->no_tlpn = $request->no_tlpn;
@@ -103,10 +104,10 @@ class SupplierController extends Controller
      * @param  \App\Models\supplier  $supplier
      * @return \Illuminate\Http\Response
      */
-    public function destroy(supplier $supplier)
+    public function destroy($id)
     {
-        $supplier = supplier::findOrFail($supplier);
+        $supplier = supplier::findOrFail($id);
         $supplier->delete();
-        return redirect()->route('suppliers.index');
+        return redirect()->route('supplier.index');
     }
 }

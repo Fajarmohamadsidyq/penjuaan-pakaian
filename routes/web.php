@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MerkController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\JenisBarangController;
+use App\Http\Controllers\PakaianController;
 
 
 /*
@@ -20,7 +23,7 @@ Route::get('/', function () {
 });
 
 Auth::routes([
-'register' => false
+'register' => true
 ]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -46,6 +49,8 @@ Route::group(['prefix' => 'admin', 'middleware' =>['auth']], function(){
 
 Route::resource('pakaian', PakaianController::class);
 Route::resource('merk', MerkController::class);
+Route::resource('supplier', SupplierController::class);
+Route::resource('jenisBarang', JenisBarangController::class);
 
 
 

@@ -14,8 +14,8 @@ class PakaianController extends Controller
      */
     public function index()
     {
-        $pakaian = pakaian::with('merk', 'supplier', 'jenisBarang')->get();
-        return view('pakaian.index', compact('pakaian'));
+        $pakaian = pakaian::all();
+        return view('pakaian.index' , compact('pakaian'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PakaianController extends Controller
     public function create()
     {
         $pakaian = pakaian::all();
-        return view('merk.create', 'supplier.create', 'jenisBarang.create', compact('pakaian'));
+        return view('pakaian.create', compact('pakaian'));
     }
 
     /**

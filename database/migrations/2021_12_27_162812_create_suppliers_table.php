@@ -17,7 +17,7 @@ class CreateSuppliersTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('alamat');
-            $table->integer('no_tlpn');
+            $table->bigInteger('no_tlpn');
             $table->timestamps();
         });
     }

@@ -53,9 +53,9 @@ class MerkController extends Controller
      * @param  \App\Models\merk  $merk
      * @return \Illuminate\Http\Response
      */
-    public function show(merk $merk)
+    public function show($id)
     {
-        $merk = merk::findOrFail($merk);
+        $merk = merk::findOrFail($id);
         return view('merk.show', compact('merk'));
     }
 
@@ -65,9 +65,9 @@ class MerkController extends Controller
      * @param  \App\Models\merk  $merk
      * @return \Illuminate\Http\Response
      */
-    public function edit(merk $merk)
+    public function edit($id)
     {
-        $merk = merk::findOrFail($merk);
+        $merk = merk::findOrFail($id);
         return view('merk.edit', compact('merk'));
     }
 
@@ -78,7 +78,7 @@ class MerkController extends Controller
      * @param  \App\Models\merk  $merk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, merk $merk)
+    public function update(Request $request, $id)
     {
 
         //validasi data
@@ -86,7 +86,7 @@ class MerkController extends Controller
             'nama_merk' => 'required',
         ]);
 
-        $merk = merk::findOrFail($merk);
+        $merk = merk::findOrFail($id);
         $merk->nama_merk = $request->nama_merk;
         $merk->save();
         return redirect()->route('merk.index');
@@ -98,9 +98,9 @@ class MerkController extends Controller
      * @param  \App\Models\merk  $merk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(merk $merk)
+    public function destroy($id)
     {
-        $merk = merk::findOrFail($merk);
+        $merk = merk::findOrFail($id);
         $merk->delete();
         return redirect()->route('merk.index');
     }

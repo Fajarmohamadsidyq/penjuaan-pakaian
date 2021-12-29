@@ -38,11 +38,17 @@ class JenisBarangController extends Controller
     {
         // validasi data
         $validate = $request->validate([
-            'kategori_barang' => 'required',
+            'jenis_barang' => 'required',
+            'bahan' => 'required',
+            'ukuran' => 'required',
+            'harga' => 'required',
         ]);
 
         $jenisBarang = new jenisBarang;
-        $jenisBarang->kategori_barang = $request->kategori_barang;
+        $jenisBarang->jenis_barang = $request->jenis_barang;
+        $jenisBarang->bahan = $request->bahan;
+        $jenisBarang->ukuran = $request->ukuran;
+        $jenisBarang->harga = $request->harga;
         $jenisBarang->save();
         return redirect()->route('jenisBarang.index');
     }
@@ -53,9 +59,9 @@ class JenisBarangController extends Controller
      * @param  \App\Models\jenisBarang  $jenisBarang
      * @return \Illuminate\Http\Response
      */
-    public function show(jenisBarang $jenisBarang)
+    public function show($id)
     {
-        $jenisBarang = jenisBarang::findOrFail($jenisBarang);
+        $jenisBarang = jenisBarang::findOrFail($id);
         return view('jenisBarang.show', compact('jenisBarang'));
     }
 
@@ -65,9 +71,9 @@ class JenisBarangController extends Controller
      * @param  \App\Models\jenisBarang  $jenisBarang
      * @return \Illuminate\Http\Response
      */
-    public function edit(jenisBarang $jenisBarang)
+    public function edit($id)
     {
-         $jenisBarang = jenisBarang::findOrFail($jenisBarang);
+         $jenisBarang = jenisBarang::findOrFail($id);
         return view('jenisBarang.edit', compact('jenisBarang'));
     }
 
@@ -78,15 +84,21 @@ class JenisBarangController extends Controller
      * @param  \App\Models\jenisBarang  $jenisBarang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, jenisBarang $jenisBarang)
+    public function update(Request $request, $id)
     {
          //validasi data
         $validate = $request->validate([
-            'kategori_barang' => 'required',
+            'jenis_barang' => 'required',
+            'bahan' => 'required',
+            'ukuran' => 'required',
+            'harga' => 'required',
         ]);
 
-        $jenisBarang = jenisBarang::findOrFail($jenisBarang);
-        $jenisBarang->kategori_barang = $request->kategori_barang;
+        $jenisBarang = jenisBarang::findOrFail($id);
+        $jenisBarang->jenis_barang = $request->jenis_barang;
+        $jenisBarang->bahan = $request->bahan;
+        $jenisBarang->ukuran = $request->ukuran;
+        $jenisBarang->harga = $request->harga;
         $jenisBarang->save();
         return redirect()->route('jenisBarang.index');
     }
@@ -97,9 +109,9 @@ class JenisBarangController extends Controller
      * @param  \App\Models\jenisBarang  $jenisBarang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(jenisBarang $jenisBarang)
+    public function destroy($id)
     {
-        $jenisBarang = jenisBarang::findOrFail($jenisBarang);
+        $jenisBarang = jenisBarang::findOrFail($id);
         $jenisBarang->delete();
         return redirect()->route('jenisBarang.index');
     }
