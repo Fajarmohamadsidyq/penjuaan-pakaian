@@ -74,14 +74,26 @@
                     <div class="panel-body">
                         <label>Nama pakaian</label>
                         <input type="text" class="form-control" name="nama">
-                        <label>ID_Merk</label>
-                        <input type="text" class="form-control" name="id_merk">
-                        <label>ID_Jenis</label>
-                        <input type="text" class="form-control" name="id_jenis">
+                        <label>Nama Merk</label>
+                        <select name="id_merk" class="form-control">
+                                    @foreach($merk as $data)
+                                    <option value="{{$data->id}}">{{$data->nama_merk}}</option>
+                                    @endforeach
+                                    </select>
+                        <label>Jenis Barang</label>
+                        <select name="id_jenis" class="form-control">
+                                    @foreach($jenisBarang as $data)
+                                    <option value="{{$data->id}}">{{$data->jenis_barang}}</option>
+                                    @endforeach
+                                    </select>
                         <label>Harga</label>
                         <input type="text" class="form-control" name="harga">
-                        <label>ID_Supplier</label>
-                        <input type="text" class="form-control" name="id_supplier">
+                        <label>Nama Supplier</label>
+                       <select name="id_supplier" class="form-control">
+                                    @foreach($supplier as $data)
+                                    <option value="{{$data->id}}">{{$data->nama}}</option>
+                                    @endforeach
+                                    </select>
                     </div>
                     <div class="panel-body">
                      <button type="reset" class="btn btn-warning">Reset</button>

@@ -72,11 +72,11 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama</th>
-                                                <th>Id_Merk</th>
-                                                <th>Id_jenis</th>
+                                                <th>Nama Pakaian</th>
+                                                <th>Nama Merk</th>
+                                                <th>jenis Pakaian</th>
                                                 <th>Harga</th>
-                                                <th>Id_Supplier</th>
+                                                <th>Nama Supplier</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -86,10 +86,10 @@
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $data->nama }}</td>
-                                                <td>{{ $data->id_merk }}</td>
-                                                <td>{{ $data->id_jenis }}</td>
-                                                <td>{{ $data->jenisBarng->harga }}</td>
-                                                <td>{{ $data->id_supplier }}</td>
+                                                <td>{{ $data->merk->nama_merk }}</td>
+                                                <td>{{ $data->jenisBarang->jenis_barang }}</td>
+                                                <td>{{ $data->harga }}</td>
+                                                <td>{{ $data->supplier->nama }}</td>
                                                 <td>
                                                 <form action="{{route('pakaian.destroy',$data->id)}}" method="post">
                                                 @method('delete')

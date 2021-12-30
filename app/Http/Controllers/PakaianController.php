@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\merk;
+use App\Models\jenisBarang;
+use App\Models\supplier;
 use App\Models\pakaian;
 use Illuminate\Http\Request;
 
@@ -26,7 +29,10 @@ class PakaianController extends Controller
     public function create()
     {
         $pakaian = pakaian::all();
-        return view('pakaian.create', compact('pakaian'));
+        $merk = merk::all();
+        $supplier = supplier::all();
+        $jenisBarang = jenisBarang::all();
+        return view('pakaian.create', compact('pakaian', 'merk', 'supplier', 'jenisBarang'));
     }
 
     /**
@@ -62,10 +68,15 @@ class PakaianController extends Controller
      * @param  \App\Models\pakaian  $pakaian
      * @return \Illuminate\Http\Response
      */
-    public function show(pakaian $pakaian)
+    public function show($id)
     {
-        $pakaian = pakaian::all();
-        return view('pakaian.show', compact('pakaian'));
+        $pakaian = pakaian::findOrFail($id);
+        $merk = merk::all();
+        $supplier = supplier::all();
+        $jenisBarang = jenisBarang::all();
+        return view('pakaian.edit', compact('pakaian', 'merk', 'supplier', 'jenisBarang'));
+
+
     }
 
     /**
@@ -74,10 +85,13 @@ class PakaianController extends Controller
      * @param  \App\Models\pakaian  $pakaian
      * @return \Illuminate\Http\Response
      */
-    public function edit(pakaian $pakaian)
+    public function edit($id)
     {
-        $pakaian = pakaian::all();
-        return view('pakaian.edit', compact('pakaian'));
+        $pakaian = pakaian::findOrFail($id);
+        $merk = merk::all();
+        $supplier = supplier::all();
+        $jenisBarang = jenisBarang::all();
+        return view('pakaian.edit', compact('pakaian', 'merk', 'supplier', 'jenisBarang'));
     }
 
     /**
@@ -87,10 +101,10 @@ class PakaianController extends Controller
      * @param  \App\Models\pakaian  $pakaian
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pakaian $pakaian)
+    public function update(Request $request, $id)
     {
-        // validasi data
-        $validate = $request->validate([
+        //validasi data
+        $validated = $request->validate([
             'nama' => 'required',
             'id_merk' => 'required',
             'id_jenis' => 'required',
@@ -98,13 +112,14 @@ class PakaianController extends Controller
             'id_supplier' => 'required',
         ]);
 
-        $pakaian = new pakaian;
+        $pakaian = pakaian::findOrFail($id);
         $pakaian->nama = $request->nama;
         $pakaian->id_merk = $request->id_merk;
         $pakaian->id_jenis = $request->id_jenis;
         $pakaian->harga = $request->harga;
         $pakaian->id_supplier = $request->id_supplier;
         $pakaian->save();
+
         return redirect()->route('pakaian.index');
     }
 
@@ -114,10 +129,10 @@ class PakaianController extends Controller
      * @param  \App\Models\pakaian  $pakaian
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pakaian $pakaian)
+    public function destroy($id)
     {
-        $pakaian = pakaian::findOrFail($pakaian);
+        $pakaian = pakaian::findOrFail($id);
         $pakaian->delete();
-        return redirect()->route('pakaians.index');
+        return redirect()->route('pakaian.index');
     }
 }
