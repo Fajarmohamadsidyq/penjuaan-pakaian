@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\chart;
+use App\Models\pakaian;
+use App\Models\pelanggan;
 use Illuminate\Http\Request;
 
 class ChartController extends Controller
@@ -14,7 +16,8 @@ class ChartController extends Controller
      */
     public function index()
     {
-        //
+        $chart = chart::all();
+        return view('chart.index' , compact('chart'));
     }
 
     /**
@@ -24,7 +27,10 @@ class ChartController extends Controller
      */
     public function create()
     {
-        //
+        $pelanggan = pelanggan::all();
+        $pakaian = pakaian::all();
+        $chart = chart::all();
+        return view('chart.create', compact('pakaian', 'chart', 'pelanggan'));
     }
 
     /**
@@ -35,7 +41,21 @@ class ChartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // validasi data
+        $validate = $request->validate([
+            'id_pelanggan' => 'required',
+            'id_pakaian' => 'required',
+            'qty' => 'required',
+            'total_harga' => 'required',
+        ]);
+
+        $chart = new chart;
+        $chart->id_pelanggan = $request->id_pelanggan;
+        $chart->id_pakaian = $request->id_pakaian;
+        $chart->qty = $request->qty;
+        $chart->total_harga = $request->total_harga;
+        $chart->save();
+        return redirect()->route('chart.index');
     }
 
     /**

@@ -13,10 +13,7 @@
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a href="#" class="active"><i class="fas fa-user-circle"></i> Profile</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fas fa-shopping-cart"></i> Charts</a>
+                                <a href="{{ route('chart.index') }}"><i class="fas fa-shopping-cart"></i> Charts</a>
                                 <ul class="nav nav-second-level">
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -40,31 +37,31 @@
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fas fa-user-circle"></i> Stok</a>
+                                <a href="{{ route('stok.index') }}"><i class="fas fa-user-circle"></i> Stok</a>
                                 <ul class="nav nav-second-level">
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fas fa-user-circle"></i> Pelanggan</a>
+                                <a href="{{ route('pelanggan.index') }}"><i class="fas fa-user-circle"></i> Pelanggan</a>
                                 <ul class="nav nav-second-level">
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fas fa-user-circle"></i> Penjualan</a>
+                                <a href="{{ route('penjualan.index') }}"><i class="fas fa-user-circle"></i> Penjualan</a>
                                 <ul class="nav nav-second-level">
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fas fa-user-circle"></i> Detail Penjualan</a>
+                                <a href="{{ route('detailPembelian.index') }}"><i class="fas fa-user-circle"></i> Detail Penjualan</a>
                                 <ul class="nav nav-second-level">
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fas fa-user-circle"></i> Pembayaran</a>
+                                <a href="{{ route('pembayaran.index') }}"><i class="fas fa-user-circle"></i> Pembayaran</a>
                                 <ul class="nav nav-second-level">
                                 </ul>
                                 <!-- /.nav-second-level -->

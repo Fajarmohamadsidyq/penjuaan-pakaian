@@ -16,7 +16,7 @@ class CreatePembayaransTable extends Migration
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
             $table->date('tgl_bayar');
-            $table->integer('total');
+            $table->bigInteger('total');
             $table->string('metode');
             $table->bigInteger('id_penjualan')->unsigned();
             //relasi

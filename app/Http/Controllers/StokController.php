@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\stok;
+use App\Models\pakaian;
 use Illuminate\Http\Request;
 
 class StokController extends Controller
@@ -14,7 +15,8 @@ class StokController extends Controller
      */
     public function index()
     {
-        //
+        $stok = stok::all();
+        return view('stok.index' , compact('stok'));
     }
 
     /**
@@ -24,7 +26,9 @@ class StokController extends Controller
      */
     public function create()
     {
-        //
+        $pakaian = pakaian::all();
+        $stok = stok::all();
+        return view('stok.create', compact('pakaian', 'stok'));
     }
 
     /**
@@ -35,7 +39,19 @@ class StokController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validasi data
+        $validate = $request->validate([
+            'id_pakaian' => 'required',
+            'tgl_stok' => 'required',
+            'qty_stok' => 'required',
+        ]);
+
+        $stok = new stok;
+        $stok->id_pakaian = $request->id_pakaian;
+        $stok->tgl_stok = $request->tgl_stok;
+        $stok->qty_stok = $request->qty_stok;
+        $stok->save();
+        return redirect()->route('stok.index');
     }
 
     /**

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\detailPembelian;
+use App\Models\penjualan;
+use App\Models\pakaian;
 use Illuminate\Http\Request;
 
 class DetailPembelianController extends Controller
@@ -14,7 +16,8 @@ class DetailPembelianController extends Controller
      */
     public function index()
     {
-        //
+        $detailPembelian = detailPembelian::all();
+        return view('detailPembelian.index' , compact('detailPembelian'));
     }
 
     /**
@@ -24,7 +27,10 @@ class DetailPembelianController extends Controller
      */
     public function create()
     {
-        //
+        $pakaian = pakaian::all();
+        $penjualan = penjualan::all();
+        $detailPembelian = detailPembelian::all();
+        return view('detailPembelian.create', compact('pakaian', 'penjualan', 'detailPembelian'));
     }
 
     /**
@@ -35,7 +41,21 @@ class DetailPembelianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+                // validasi data
+        $validate = $request->validate([
+            'id_penjualan' => 'required',
+            'id_pakaian' => 'required',
+            'qty' => 'required',
+            'total_harga' => 'required',
+        ]);
+
+        $detailPembelian = new detailPembelian;
+        $detailPembelian->id_penjualan = $request->id_penjualan;
+        $detailPembelian->id_pakaian = $request->id_pakaian;
+        $detailPembelian->qty = $request->qty;
+        $detailPembelian->total_harga = $request->total_harga;
+        $detailPembelian->save();
+        return redirect()->route('detailPembelian.index');
     }
 
     /**

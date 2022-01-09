@@ -15,14 +15,10 @@ class CreatePelanggansTable extends Migration
     {
         Schema::create('pelanggans', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_user')->unsigned();
             $table->string('nama');
             $table->string('jk');
             $table->string('alamat');
-            $table->integer('no_tlpn');
-            //relasi
-            $table->foreign('id_user')->references('id')
-                ->on('users');
+            $table->string('no_tlpn');
             $table->timestamps();
         });
     }

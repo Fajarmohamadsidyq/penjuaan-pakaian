@@ -14,7 +14,8 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        //
+        $pelanggan = pelanggan::all();
+        return view('pelanggan.index' , compact('pelanggan'));
     }
 
     /**
@@ -24,7 +25,8 @@ class PelangganController extends Controller
      */
     public function create()
     {
-        //
+        $pelanggan = pelanggan::all();
+        return view('pelanggan.create', compact('pelanggan'));
     }
 
     /**
@@ -35,7 +37,21 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // validasi data
+        $validate = $request->validate([
+            'nama' => 'required',
+            'jk' => 'required',
+            'alamat' => 'required',
+            'no_tlpn' => 'required',
+        ]);
+
+        $pelanggan = new pelanggan;
+        $pelanggan->nama = $request->nama;
+        $pelanggan->jk = $request->jk;
+        $pelanggan->alamat = $request->alamat;
+        $pelanggan->no_tlpn = $request->no_tlpn;
+        $pelanggan->save();
+        return redirect()->route('pelanggan.index');
     }
 
     /**

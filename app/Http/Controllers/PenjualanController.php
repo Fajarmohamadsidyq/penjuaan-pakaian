@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\penjualan;
+use App\Models\pelanggan;
+use App\Models\chart;
 use Illuminate\Http\Request;
 
 class PenjualanController extends Controller
@@ -14,7 +16,8 @@ class PenjualanController extends Controller
      */
     public function index()
     {
-        //
+        $penjualan = penjualan::all();
+        return view('penjualan.index' , compact('penjualan'));
     }
 
     /**
@@ -24,7 +27,10 @@ class PenjualanController extends Controller
      */
     public function create()
     {
-        //
+        $chart = chart::all();
+        $pelanggan = pelanggan::all();
+        $penjualan = penjualan::all();
+        return view('penjualan.create', compact('pelanggan', 'penjualan', 'chart'));
     }
 
     /**
@@ -35,7 +41,21 @@ class PenjualanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+                // validasi data
+        $validate = $request->validate([
+            'id_pelanggan' => 'required',
+            'id_chart' => 'required',
+            'tgl_pembelian' => 'required',
+            'total_pembelian' => 'required',
+        ]);
+
+        $penjualan = new penjualan;
+        $penjualan->id_pelanggan = $request->id_pelanggan;
+        $penjualan->id_chart = $request->id_chart;
+        $penjualan->tgl_pembelian = $request->tgl_pembelian;
+        $penjualan->total_pembelian = $request->total_pembelian;
+        $penjualan->save();
+        return redirect()->route('penjualan.index');
     }
 
     /**
