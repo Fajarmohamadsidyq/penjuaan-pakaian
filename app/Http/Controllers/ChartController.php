@@ -64,9 +64,13 @@ class ChartController extends Controller
      * @param  \App\Models\chart  $chart
      * @return \Illuminate\Http\Response
      */
-    public function show(chart $chart)
+    public function show($id)
     {
-        //
+        $chart = chart::findOrFail($id);
+        $pelanggan = pelanggan::all();
+        $pakaian = pakaian::all();
+        return view('chart.show', compact('chart', 'pelanggan', 'pakaian'));
+
     }
 
     /**
@@ -75,9 +79,12 @@ class ChartController extends Controller
      * @param  \App\Models\chart  $chart
      * @return \Illuminate\Http\Response
      */
-    public function edit(chart $chart)
+    public function edit($id)
     {
-        //
+        $chart = chart::findOrFail($id);
+        $pelanggan = pelanggan::all();
+        $pakaian = pakaian::all();
+        return view('chart.edit', compact('chart', 'pelanggan', 'pakaian'));
     }
 
     /**
@@ -87,9 +94,23 @@ class ChartController extends Controller
      * @param  \App\Models\chart  $chart
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, chart $chart)
+    public function update(Request $request, $id)
     {
-        //
+        // validasi data
+        $validate = $request->validate([
+            'id_pelanggan' => 'required',
+            'id_pakaian' => 'required',
+            'qty' => 'required',
+            'total_harga' => 'required',
+        ]);
+
+        $chart = chart::findOrFail($id);
+        $chart->id_pelanggan = $request->id_pelanggan;
+        $chart->id_pakaian = $request->id_pakaian;
+        $chart->qty = $request->qty;
+        $chart->total_harga = $request->total_harga;
+        $chart->save();
+        return redirect()->route('chart.index');
     }
 
     /**
@@ -98,8 +119,10 @@ class ChartController extends Controller
      * @param  \App\Models\chart  $chart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(chart $chart)
+    public function destroy($id)
     {
-        //
+        $chart = chart::findOrFail($id);
+        $chart->delete();
+        return redirect()->route('chart.index');
     }
 }

@@ -60,9 +60,11 @@ class StokController extends Controller
      * @param  \App\Models\stok  $stok
      * @return \Illuminate\Http\Response
      */
-    public function show(stok $stok)
+    public function show($id)
     {
-        //
+        $stok = stok::findOrFail($id);
+        $pakaian = pakaian::all();
+        return view('stok.show', compact('stok', 'pakaian'));
     }
 
     /**
@@ -71,9 +73,11 @@ class StokController extends Controller
      * @param  \App\Models\stok  $stok
      * @return \Illuminate\Http\Response
      */
-    public function edit(stok $stok)
+    public function edit($id)
     {
-        //
+         $stok = stok::findOrFail($id);
+        $pakaian = pakaian::all();
+        return view('stok.edit', compact('stok', 'pakaian'));
     }
 
     /**
@@ -83,9 +87,21 @@ class StokController extends Controller
      * @param  \App\Models\stok  $stok
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, stok $stok)
+    public function update(Request $request, $id)
     {
-        //
+        // validasi data
+        $validate = $request->validate([
+            'id_pakaian' => 'required',
+            'tgl_stok' => 'required',
+            'qty_stok' => 'required',
+        ]);
+
+        $stok = stok::findOrFail($id);
+        $stok->id_pakaian = $request->id_pakaian;
+        $stok->tgl_stok = $request->tgl_stok;
+        $stok->qty_stok = $request->qty_stok;
+        $stok->save();
+        return redirect()->route('stok.index');
     }
 
     /**
@@ -94,8 +110,10 @@ class StokController extends Controller
      * @param  \App\Models\stok  $stok
      * @return \Illuminate\Http\Response
      */
-    public function destroy(stok $stok)
+    public function destroy($id)
     {
-        //
+        $stok = stok::findOrFail($id);
+        $stok->delete();
+        return redirect()->route('stok.index');
     }
 }

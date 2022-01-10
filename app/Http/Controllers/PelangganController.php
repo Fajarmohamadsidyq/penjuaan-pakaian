@@ -60,9 +60,10 @@ class PelangganController extends Controller
      * @param  \App\Models\pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function show(pelanggan $pelanggan)
+    public function show($id)
     {
-        //
+        $pelanggan = pelanggan::findOrFail($id);
+        return view('pelanggan.show', compact('pelanggan'));
     }
 
     /**
@@ -71,9 +72,10 @@ class PelangganController extends Controller
      * @param  \App\Models\pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function edit(pelanggan $pelanggan)
+    public function edit($id)
     {
-        //
+        $pelanggan = pelanggan::findOrFail($id);
+        return view('pelanggan.edit', compact('pelanggan'));
     }
 
     /**
@@ -83,9 +85,23 @@ class PelangganController extends Controller
      * @param  \App\Models\pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pelanggan $pelanggan)
+    public function update(Request $request, $id)
     {
-        //
+        // validasi data
+        $validate = $request->validate([
+            'nama' => 'required',
+            'jk' => 'required',
+            'alamat' => 'required',
+            'no_tlpn' => 'required',
+        ]);
+
+        $pelanggan = pelanggan::findOrFail($id);
+        $pelanggan->nama = $request->nama;
+        $pelanggan->jk = $request->jk;
+        $pelanggan->alamat = $request->alamat;
+        $pelanggan->no_tlpn = $request->no_tlpn;
+        $pelanggan->save();
+        return redirect()->route('pelanggan.index');
     }
 
     /**
@@ -94,8 +110,10 @@ class PelangganController extends Controller
      * @param  \App\Models\pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pelanggan $pelanggan)
+    public function destroy($id)
     {
-        //
+        $pelanggan = pelanggan::findOrFail($id);
+        $pelanggan->delete();
+        return redirect()->route('pelanggan.index');
     }
 }

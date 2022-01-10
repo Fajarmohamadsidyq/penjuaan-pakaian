@@ -74,7 +74,7 @@ class PakaianController extends Controller
         $merk = merk::all();
         $supplier = supplier::all();
         $jenisBarang = jenisBarang::all();
-        return view('pakaian.edit', compact('pakaian', 'merk', 'supplier', 'jenisBarang'));
+        return view('pakaian.show', compact('pakaian', 'merk', 'supplier', 'jenisBarang'));
 
 
     }

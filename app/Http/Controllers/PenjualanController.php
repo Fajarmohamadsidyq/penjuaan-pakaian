@@ -64,9 +64,12 @@ class PenjualanController extends Controller
      * @param  \App\Models\penjualan  $penjualan
      * @return \Illuminate\Http\Response
      */
-    public function show(penjualan $penjualan)
+    public function show($id)
     {
-        //
+        $penjualan = penjualan::findOrFail($id);
+        $pelanggan = pelanggan::all();
+        $chart = chart::all();
+        return view('penjualan.show', compact('penjualan', 'pelanggan', 'chart'));
     }
 
     /**
@@ -75,9 +78,12 @@ class PenjualanController extends Controller
      * @param  \App\Models\penjualan  $penjualan
      * @return \Illuminate\Http\Response
      */
-    public function edit(penjualan $penjualan)
+    public function edit($id)
     {
-        //
+        $penjualan = penjualan::findOrFail($id);
+        $pelanggan = pelanggan::all();
+        $chart = chart::all();
+        return view('penjualan.edit', compact('penjualan', 'pelanggan', 'chart'));
     }
 
     /**
@@ -87,9 +93,23 @@ class PenjualanController extends Controller
      * @param  \App\Models\penjualan  $penjualan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, penjualan $penjualan)
+    public function update(Request $request, $id)
     {
-        //
+        // validasi data
+        $validate = $request->validate([
+            'id_pelanggan' => 'required',
+            'id_chart' => 'required',
+            'tgl_pembelian' => 'required',
+            'total_pembelian' => 'required',
+        ]);
+
+        $penjualan = penjualan::findOrFail($id);
+        $penjualan->id_pelanggan = $request->id_pelanggan;
+        $penjualan->id_chart = $request->id_chart;
+        $penjualan->tgl_pembelian = $request->tgl_pembelian;
+        $penjualan->total_pembelian = $request->total_pembelian;
+        $penjualan->save();
+        return redirect()->route('penjualan.index');
     }
 
     /**
@@ -98,8 +118,10 @@ class PenjualanController extends Controller
      * @param  \App\Models\penjualan  $penjualan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(penjualan $penjualan)
+    public function destroy($id)
     {
-        //
+        $penjualan = penjualan::findOrFail($id);
+        $penjualan->delete();
+        return redirect()->route('penjualan.index');
     }
 }

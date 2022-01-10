@@ -41,7 +41,7 @@ class DetailPembelianController extends Controller
      */
     public function store(Request $request)
     {
-                // validasi data
+        // validasi data
         $validate = $request->validate([
             'id_penjualan' => 'required',
             'id_pakaian' => 'required',
@@ -64,9 +64,12 @@ class DetailPembelianController extends Controller
      * @param  \App\Models\detailPembelian  $detailPembelian
      * @return \Illuminate\Http\Response
      */
-    public function show(detailPembelian $detailPembelian)
+    public function show($id)
     {
-        //
+        $detailPembelian = detailPembelian::findOrFail($id);
+        $penjualan = penjualan::all();
+        $pakaian = pakaian::all();
+        return view('detailPembelian.show', compact('detailPembelian', 'penjualan', 'pakaian'));
     }
 
     /**
@@ -75,9 +78,12 @@ class DetailPembelianController extends Controller
      * @param  \App\Models\detailPembelian  $detailPembelian
      * @return \Illuminate\Http\Response
      */
-    public function edit(detailPembelian $detailPembelian)
+    public function edit($id)
     {
-        //
+         $detailPembelian = detailPembelian::findOrFail($id);
+        $penjualan = penjualan::all();
+        $pakaian = pakaian::all();
+        return view('detailPembelian.edit', compact('detailPembelian', 'penjualan', 'pakaian'));
     }
 
     /**
@@ -87,9 +93,23 @@ class DetailPembelianController extends Controller
      * @param  \App\Models\detailPembelian  $detailPembelian
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, detailPembelian $detailPembelian)
+    public function update(Request $request, $id)
     {
-        //
+        // validasi data
+        $validate = $request->validate([
+            'id_penjualan' => 'required',
+            'id_pakaian' => 'required',
+            'qty' => 'required',
+            'total_harga' => 'required',
+        ]);
+
+        $detailPembelian = detailPembelian::findOrFail($id);
+        $detailPembelian->id_penjualan = $request->id_penjualan;
+        $detailPembelian->id_pakaian = $request->id_pakaian;
+        $detailPembelian->qty = $request->qty;
+        $detailPembelian->total_harga = $request->total_harga;
+        $detailPembelian->save();
+        return redirect()->route('detailPembelian.index');
     }
 
     /**
@@ -98,8 +118,10 @@ class DetailPembelianController extends Controller
      * @param  \App\Models\detailPembelian  $detailPembelian
      * @return \Illuminate\Http\Response
      */
-    public function destroy(detailPembelian $detailPembelian)
+    public function destroy($id)
     {
-        //
+        $detailPembelian = detailPembelian::findOrFail($id);
+        $detailPembelian->delete();
+        return redirect()->route('detailPembelian.index');
     }
 }

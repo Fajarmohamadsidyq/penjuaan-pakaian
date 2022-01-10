@@ -62,9 +62,11 @@ class PembayaranController extends Controller
      * @param  \App\Models\pembayaran  $pembayaran
      * @return \Illuminate\Http\Response
      */
-    public function show(pembayaran $pembayaran)
+    public function show($id)
     {
-        //
+        $pembayaran = pembayaran::findOrFail($id);
+        $penjualan = penjualan::all();
+        return view('pembayaran.show', compact('pembayaran', 'penjualan'));
     }
 
     /**
@@ -73,9 +75,11 @@ class PembayaranController extends Controller
      * @param  \App\Models\pembayaran  $pembayaran
      * @return \Illuminate\Http\Response
      */
-    public function edit(pembayaran $pembayaran)
+    public function edit($id)
     {
-        //
+        $pembayaran = pembayaran::findOrFail($id);
+        $penjualan = penjualan::all();
+        return view('pembayaran.edit', compact('pembayaran', 'penjualan'));
     }
 
     /**
@@ -85,9 +89,23 @@ class PembayaranController extends Controller
      * @param  \App\Models\pembayaran  $pembayaran
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pembayaran $pembayaran)
+    public function update(Request $request, $id)
     {
-        //
+        // validasi data
+        $validate = $request->validate([
+            'tgl_bayar' => 'required',
+            'total' => 'required',
+            'metode' => 'required',
+            'id_penjualan' => 'required',
+        ]);
+
+        $pembayaran = pembayaran::findOrFail($id);
+        $pembayaran->tgl_bayar = $request->tgl_bayar;
+        $pembayaran->total = $request->total;
+        $pembayaran->metode = $request->metode;
+        $pembayaran->id_penjualan = $request->id_penjualan;
+        $pembayaran->save();
+        return redirect()->route('pembayaran.index');
     }
 
     /**
@@ -96,8 +114,10 @@ class PembayaranController extends Controller
      * @param  \App\Models\pembayaran  $pembayaran
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pembayaran $pembayaran)
+    public function destroy($id)
     {
-        //
+        $pembayaran = pembayaran::findOrFail($id);
+        $pembayaran->delete();
+        return redirect()->route('pembayaran.index');
     }
 }
