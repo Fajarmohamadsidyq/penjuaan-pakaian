@@ -77,6 +77,7 @@
                                                 <th>jenis Pakaian</th>
                                                 <th>Harga</th>
                                                 <th>Nama Supplier</th>
+                                                <th>Foto</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -90,6 +91,9 @@
                                                 <td>{{ $data->jenisBarang->jenis_barang }}</td>
                                                 <td>{{ $data->harga }}</td>
                                                 <td>{{ $data->supplier->nama }}</td>
+                                                <td><img src="{{ asset("image/pakaian/".$data->foto) }}" alt="" style="width:150px; height:150px;"
+                                                alt="foto"></td>
+                                        <td>
                                                 <td>
                                                 <form action="{{route('pakaian.destroy',$data->id)}}" method="post">
                                                 @method('delete')

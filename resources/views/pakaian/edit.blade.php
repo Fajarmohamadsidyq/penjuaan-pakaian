@@ -103,6 +103,12 @@
                                         <option value="{{$data->id}}" {{$data->id == $pakaian->id_supplier ? 'selected="selected"' : '' }}>{{$data->nama}}</option>
                                         @endforeach
                                     </select>
+                                <div class="form-group">
+                                <label for="">Masukan Foto Pakaian</label>
+                                <br>
+                                <img src="{{ $pakaian->image() }}" height="75" style="padding:10px;" />
+                                <input type="file" name="foto" class="form-control">
+                            </div>
                                 </div>
                                 <div class="panel-body">
                                     <button type="reset" class="btn btn-warning">Reset</button>

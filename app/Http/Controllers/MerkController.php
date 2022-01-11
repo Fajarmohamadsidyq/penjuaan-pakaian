@@ -15,7 +15,13 @@ class MerkController extends Controller
     public function index()
     {
         $merk = merk::all();
-        return view('merk.index' , compact('merk'));
+
+        //ubah ke json
+        return response()->json([
+        'succes' => true,
+        'message' => 'List Data Merk',
+        'data' => $merk
+    ], 200);
     }
 
     /**

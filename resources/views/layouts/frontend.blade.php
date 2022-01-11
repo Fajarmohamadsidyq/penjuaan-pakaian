@@ -203,10 +203,10 @@
 									<div class="products-slick" data-nav="#slick-nav-1">
 
 										<!-- product -->
-
+                                        @foreach($pakaian as $data)
 										<div class="product">
 											<div class="product-img">
-												<img src="{{asset('frontend/img/product01.png')}}" alt="">
+												<img src="{{ asset("image/pakaian/".$data->foto) }}" alt="">
 												<div class="product-label">
 													<span class="sale">-30%</span>
 													<span class="new">NEW</span>
@@ -214,8 +214,8 @@
 											</div>
 											<div class="product-body">
 												<p class="product-category">Category</p>
-												<h3 class="product-name"><a href="#">ROG </a></h3>
-												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+												<h3 class="product-name"><a href="#">{{ $data->nama }} </a></h3>
+												<h4 class="product-price">{{ $data->harga }} </h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
 													<i class="fa fa-star"></i>
@@ -234,6 +234,7 @@
 											</div>
 										</div>
 										<!-- /product -->
+                                        @endforeach
 
 									</div>
 									<div id="slick-nav-1" class="products-slick-nav"></div>

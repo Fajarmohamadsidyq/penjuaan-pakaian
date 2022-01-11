@@ -11,6 +11,7 @@ use App\Http\Controllers\ChartController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\DetailPembelianController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\FrontendController;
 
 
 /*
@@ -24,9 +25,7 @@ use App\Http\Controllers\PembayaranController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/', FrontendController::class);
 
 Auth::routes([
 'register' => true
@@ -63,6 +62,7 @@ Route::resource('chart', ChartController::class);
 Route::resource('penjualan', PenjualanController::class);
 Route::resource('detailPembelian', DetailPembelianController::class);
 Route::resource('pembayaran', PembayaranController::class);
+
 
 
 

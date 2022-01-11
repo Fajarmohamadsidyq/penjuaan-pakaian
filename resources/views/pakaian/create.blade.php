@@ -69,7 +69,7 @@
                             <div class="panel-heading">
                              Tambah Data pakaian
                              </div>
-                            <form Action="{{ route('pakaian.store')}}" method="post">
+                            <form Action="{{ route('pakaian.store')}}" method="post" enctype="multipart/form-data">
                              @csrf
                     <div class="panel-body">
                         <label>Nama pakaian</label>
@@ -89,11 +89,20 @@
                         <label>Harga</label>
                         <input type="text" class="form-control" name="harga">
                         <label>Nama Supplier</label>
-                       <select name="id_supplier" class="form-control">
+                        <select name="id_supplier" class="form-control">
                                     @foreach($supplier as $data)
                                     <option value="{{$data->id}}">{{$data->nama}}</option>
                                     @endforeach
                                     </select>
+                        <div class="form-group">
+                                <label for="">Masukan Foto Pakaian</label>
+                                <input type="file" name="foto" class="form-control @error('foto') is-invalid @enderror">
+                                @error('foto')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                     </div>
                     <div class="panel-body">
                      <button type="reset" class="btn btn-warning">Reset</button>

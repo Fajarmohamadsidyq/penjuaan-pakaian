@@ -20,6 +20,7 @@ class CreatePakaiansTable extends Migration
             $table->bigInteger('id_jenis')->unsigned();
             $table->integer('harga');
             $table->bigInteger('id_supplier')->unsigned();
+            $table->string('foto')->nullable();
             // relasi
             $table->foreign('id_merk')->references('id')
                 ->on('merks');

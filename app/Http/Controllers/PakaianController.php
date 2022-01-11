@@ -58,6 +58,13 @@ class PakaianController extends Controller
         $pakaian->id_jenis = $request->id_jenis;
         $pakaian->harga = $request->harga;
         $pakaian->id_supplier = $request->id_supplier;
+        // upload image / foto
+        if ($request->hasFile('foto')) {
+            $image = $request->file('foto');
+            $name = rand(1000, 9999) . $image->getClientOriginalName();
+            $image->move('image/pakaian/', $name);
+            $pakaian->foto = $name;
+        }
         $pakaian->save();
         return redirect()->route('pakaian.index');
     }
@@ -118,6 +125,13 @@ class PakaianController extends Controller
         $pakaian->id_jenis = $request->id_jenis;
         $pakaian->harga = $request->harga;
         $pakaian->id_supplier = $request->id_supplier;
+        // upload image / foto
+        if ($request->hasFile('foto')) {
+            $image = $request->file('foto');
+            $name = rand(1000, 9999) . $image->getClientOriginalName();
+            $image->move('image/pakaian/', $name);
+            $pakaian->foto = $name;
+        }
         $pakaian->save();
 
         return redirect()->route('pakaian.index');

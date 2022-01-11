@@ -9,8 +9,8 @@ class pakaian extends Model
 {
     use HasFactory;
 
-    protected $visible = ['nama', 'id_merk', 'id_jenis', 'harga', 'id_supplier'];
-    protected $fillable = ['nama', 'id_merk', 'id_jenis', 'harga', 'id_supplier'];
+    protected $visible = ['nama', 'id_merk', 'id_jenis', 'harga', 'id_supplier', 'foto'];
+    protected $fillable = ['nama', 'id_merk', 'id_jenis', 'harga', 'id_supplier', 'foto'];
     public $timestamps = true;
 
     public function merk()
@@ -26,5 +26,20 @@ class pakaian extends Model
     public function jenisBarang()
     {
         return $this->belongsTo('App\Models\jenisBarang', 'id_jenis');
+    }
+    public function image()
+    {
+        if ($this->cover && file_exists(public_path('image/pakaian/' . $this->cover))) {
+            return asset('image/pakaian/' . $this->cover);
+        } else {
+            return asset('image/no_image.png');
+        }
+    }
+
+    public function deleteImage()
+    {
+        if ($this->cover && file_exists(public_path('image/pakaian/' . $this->cover))) {
+            return unlink(public_path('image/pakaian/' . $this->cover));
+        }
     }
 }

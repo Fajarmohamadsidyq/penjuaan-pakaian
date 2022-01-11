@@ -83,6 +83,12 @@
                                     <input type="text" class="form-control" name="harga" value="{{$pakaian->harga}}" disabled>
                                     <label>Nama Supplier</label>
                                     <input type="text" class="form-control" name="id_supplier" value="{{$pakaian->id_supplier}}" disabled>
+                                    <div class="form-group">
+                                <label for="">Cover Buku</label>
+                                <br>
+                                <img src="{{ $pakaian->image() }}" height="75" style="padding:10px;" />
+
+                            </div>
                                 </div>
                             </form>
                         </div>
