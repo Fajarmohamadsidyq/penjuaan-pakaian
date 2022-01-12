@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-		<title>Electro - HTML Ecommerce Template</title>
+		<title>Fajar Mohamad Sidyq</title>
 
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -118,17 +118,6 @@
 												</div>
 												<button class="delete"><i class="fa fa-close"></i></button>
 											</div>
-
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="{{asset('frontend/img/product02.png')}}" alt="">
-												</div>
-												<div class="product-body">
-													<h3 class="product-name"><a href="#">product name goes here</a></h3>
-													<h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-												</div>
-												<button class="delete"><i class="fa fa-close"></i></button>
-											</div>
 										</div>
 										<div class="cart-summary">
 											<small>3 Item(s) selected</small>
@@ -169,15 +158,6 @@
 				<!-- responsive-nav -->
 				<div id="responsive-nav">
 					<!-- NAV -->
-					<ul class="main-nav nav navbar-nav">
-						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#">Hot Deals</a></li>
-						<li><a href="#">Categories</a></li>
-						<li><a href="#">Laptops</a></li>
-						<li><a href="#">Smartphones</a></li>
-						<li><a href="#">Cameras</a></li>
-						<li><a href="#">Accessories</a></li>
-					</ul>
 					<!-- /NAV -->
 				</div>
 				<!-- /responsive-nav -->
@@ -230,7 +210,7 @@
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+												<button  class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> <a href="{{ route('chart.create', $data->id) }}">add to cart</a></button>
 											</div>
 										</div>
 										<!-- /product -->

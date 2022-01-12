@@ -15,13 +15,13 @@ class MerkController extends Controller
     public function index()
     {
         $merk = merk::all();
-
+        return view('merk.index' , compact('merk'));
         //ubah ke json
-        return response()->json([
-        'succes' => true,
-        'message' => 'List Data Merk',
-        'data' => $merk
-    ], 200);
+        //return response()->json([
+        //'succes' => true,
+        //'message' => 'List Data Merk',
+        //'data' => $merk
+    //], 200);
     }
 
     /**
@@ -109,5 +109,17 @@ class MerkController extends Controller
         $merk = merk::findOrFail($id);
         $merk->delete();
         return redirect()->route('merk.index');
+    }
+
+
+     public function data()
+    {
+        $merk = merk::all();
+        // ubah ke json
+        return response()->json([
+        'succes' => true,
+        'message' => 'List Data Merk',
+        'data' => $merk
+    ], 200);
     }
 }
