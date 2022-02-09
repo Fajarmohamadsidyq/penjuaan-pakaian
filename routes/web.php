@@ -31,7 +31,7 @@ Auth::routes([
 'register' => true
 ]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 //hanya untuk admin
 //Route::group(['prefix' => 'admin', 'middleware' =>['auth', 'role::admin']], function(){
@@ -44,15 +44,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //});
 
 Route::group(['prefix' => 'admin', 'middleware' =>['auth']], function(){
-    Route::get('profil', function(){
-        return view('profil.index');
-    })->middleware(['role:admin|pengguna']);
-    Route::get('keranjang', function(){
-        return view('keranjang.index');
-    })->middleware(['role:admin|pengguna']);
-});
-
-Route::resource('pakaian', PakaianController::class);
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('pakaian', PakaianController::class);
 Route::resource('merk', MerkController::class);
 Route::resource('supplier', SupplierController::class);
 Route::resource('jenisBarang', JenisBarangController::class);
@@ -62,8 +55,23 @@ Route::resource('chart', ChartController::class);
 Route::resource('penjualan', PenjualanController::class);
 Route::resource('detailPembelian', DetailPembelianController::class);
 Route::resource('pembayaran', PembayaranController::class);
+//     Route::get('profil', function(){
+//         return view('profil.index');
+//     })->middleware(['role:admin|pengguna']);
+//     Route::get('keranjang', function(){
+//         return view('keranjang.index');
+//     })->middleware(['role:admin|pengguna']);
+
+});
 
 
+// Route::group(['prefix' => 'admin', 'middleware', => ['auth']], function (){
+// Route::group(['prefix'=>'admin','as'=>'account.'], function(){
+
+// });
+
+
+// });
 
 
 

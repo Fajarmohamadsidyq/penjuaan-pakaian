@@ -68,7 +68,13 @@
                                     <label>Alamat</label>
                                     <input type="text" class="form-control" name="alamat" value="{{$supplier->alamat}}">
                                     <label>No Telephon</label>
-                                    <input type="text" class="form-control" name="no_tlpn" value="{{$supplier->no_tlpn}}">
+                                    <input type="number" class="form-control" name="no_tlpn" value="{{$supplier->no_tlpn}}">
+                                    <small class="form-text form-muted">Masukan No Telephone Yang Benar</small>
+                                    @error('no_tlpn')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 </div>
                                 <div class="panel-body">
                                     <button type="reset" class="btn btn-warning">Reset</button>
