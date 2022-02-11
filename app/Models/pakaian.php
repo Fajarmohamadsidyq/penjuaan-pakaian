@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Alert;
 
 class pakaian extends Model
 {
@@ -41,5 +42,6 @@ class pakaian extends Model
         if ($this->cover && file_exists(public_path('image/pakaian/' . $this->cover))) {
             return unlink(public_path('image/pakaian/' . $this->cover));
         }
+
     }
 }

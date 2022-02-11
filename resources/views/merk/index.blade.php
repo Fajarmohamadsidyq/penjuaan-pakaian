@@ -45,6 +45,7 @@
             <!-- /input-group -->
             @include('auth.bagian.sidebar')
             <!-- /.nav-second-level -->
+            @include('sweetalert::alert')
                             </li>
                         </ul>
                     </div>
@@ -62,8 +63,8 @@
                                             <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                               Data Merk
-                               <a href="{{ route('merk.create')}}" class="btn btn-primary float-right">Tambah</a>
+                            Data Merk
+                            <a href="{{ route('merk.create')}}" class="btn btn-primary float-right">Tambah</a>
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
@@ -89,7 +90,7 @@
 
                                                 <a href="{{route('merk.edit',$data->id)}}" class="btn btn-success float-right">Edit</a>
                                                 <a href="{{route('merk.show',$data->id)}}" class="btn btn-warning float-right">Show</a>
-                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus ini?');">Delete</button>
+                                                <button type="submit" class="btn btn-danger delete-confirm">Delete</button>
                                                 </form>
                                                 </td>
                                             </tr>
@@ -133,6 +134,27 @@
         <script src="{{asset('backend/js/raphael.min.js')}}"></script>
         <script src="{{asset('backend/js/morris.min.js')}}"></script>
         <script src="{{asset('backend/js/morris-data.js')}}"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(".delete-confirm").click(function (event) {
+        var form = $(this).closest("form");
+        var name = $(this).data("name");
+        event.preventDefault();
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    });
+</script>
 
         <!-- Custom Theme JavaScript -->
         <script src="{{asset('backend/js/startmin.js')}}"></script>

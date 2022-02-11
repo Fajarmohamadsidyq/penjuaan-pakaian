@@ -79,6 +79,7 @@
         <script src="{{asset('backend/js/jquery.min.js')}}"></script>
 
         <!-- Bootstrap Core JavaScript -->
+        @include('sweetalert::alert')
         <script src="{{asset('backend/js/bootstrap.min.js')}}"></script>
 
         <!-- Metis Menu Plugin JavaScript -->

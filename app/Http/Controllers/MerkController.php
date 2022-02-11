@@ -112,7 +112,7 @@ class MerkController extends Controller
     }
 
 
-     public function data()
+    public function data()
     {
         $merk = merk::all();
         // ubah ke json
