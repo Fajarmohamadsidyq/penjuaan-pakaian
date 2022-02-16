@@ -149,4 +149,15 @@ class PakaianController extends Controller
         $pakaian->delete();
         return redirect()->route('pakaian.index');
     }
+
+    public function cart($id)
+    {
+        $pakaian = pakaian::findOrFail($id);
+        $merk = merk::all();
+        $supplier = supplier::all();
+        $jenisBarang = jenisBarang::all();
+        return view('pesan.index', compact('pakaian', 'merk', 'supplier', 'jenisBarang'));
+
+
+    }
 }

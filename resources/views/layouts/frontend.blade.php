@@ -60,7 +60,6 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="#" class="logo">
-									<img src="{{asset('frontend/img/logo.png')}}" alt="">
 								</a>
 							</div>
 						</div>
@@ -72,8 +71,6 @@
 								<form>
 									<select class="input-select">
 										<option value="0">All Categories</option>
-										<option value="1">Category 01</option>
-										<option value="1">Category 02</option>
 									</select>
 									<input class="input" placeholder="Search here">
 									<button class="search-btn">Search</button>
@@ -185,7 +182,7 @@
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button  class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> <a href="{{ route('chart.create', $data->id) }}">add to cart</a></button>
+												<button  class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> <a href="{{ url('pesan', $data->id) }}">add to cart</a></button>
 											</div>
 										</div>
 										<!-- /product -->

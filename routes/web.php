@@ -12,6 +12,7 @@ use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\DetailPembelianController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\FrontendController;
+//use App\Http\Controllers\PesanController;
 
 
 /*
@@ -26,6 +27,7 @@ use App\Http\Controllers\FrontendController;
 */
 
 Route::resource('/', FrontendController::class);
+//Route::resource('/', PesanController::class);
 
 Auth::routes([
 'register' => true
@@ -42,7 +44,8 @@ Auth::routes([
 //        return 'Halaman Profil Admin';
 //    });
 //});
-
+Route::get('pesan/{id}', [App\Http\Controllers\PesanController::class, 'index']);
+Route::post('co/{id}', [App\Http\Controllers\PesanController::class, 'pesan']);
 Route::group(['prefix' => 'admin', 'middleware' =>['auth']], function(){
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('pakaian', PakaianController::class);
