@@ -24,8 +24,13 @@ class PesanController extends Controller
 
     public function pesan(Request $request, $id)
     {
-        return view('pesan.co');
+        $pakaian = pakaian::where('id', $id)->first();
+        return view('pesan.co',compact('pakaian'));
     }
+    // public function checkout($id){
+
+    //     return view('pesan.co');
+    // }
 
 
 }

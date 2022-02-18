@@ -25,6 +25,16 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            @php $no=1; @endphp
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $pakaian->foto }}</td>
+                                <td>{{ $pakaian->nama }}</td>
+                                <td></td>
+                                <td>{{ $pakaian->harga }}</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>

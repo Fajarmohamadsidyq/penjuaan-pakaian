@@ -54,7 +54,7 @@
 
                         <!-- /.col-lg-12 -->
                                         {{-- TABLE --}}
-                                             <div id="page-wrapper">
+            <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -63,7 +63,7 @@
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- TABLE -->
-                 <div class="row">
+                <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
