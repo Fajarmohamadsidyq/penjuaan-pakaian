@@ -31,6 +31,16 @@
                                         <td>Rp. {{ number_format($pakaian->harga) }}</td>
                                     </tr>
                                     <tr>
+                                        <td>Bahan</td>
+                                        <td>:</td>
+                                        <td>{{($pakaian->bahan) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ukuran</td>
+                                        <td>:</td>
+                                        <td>{{($pakaian->ukuran) }}</td>
+                                    </tr>
+                                    <tr>
                                         <td>Jumlah Pesan</td>
                                         <td>:</td>
                                         <td>

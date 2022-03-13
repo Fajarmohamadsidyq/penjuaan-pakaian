@@ -93,6 +93,14 @@
                                     </select>
                                 </div>
                                 <div class="panel-body">
+                                    <label>Bahan</label>
+                                    <input type="text" class="form-control" name="bahan" value="{{$pakaian->bahan}}">
+                                </div>
+                                <div class="panel-body">
+                                    <label>Ukuran</label>
+                                    <input type="text" class="form-control" name="ukuran" value="{{$pakaian->ukuran}}">
+                                </div>
+                                <div class="panel-body">
                                     <label>Harga</label>
                                     <input type="text" class="form-control" name="harga" value="{{$pakaian->harga}}">
                                 </div>

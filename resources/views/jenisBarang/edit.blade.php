@@ -65,10 +65,6 @@
                                 <div class="panel-body">
                                     <label>Nama Barang</label>
                                     <input type="text" class="form-control" name="jenis_barang" value="{{$jenisBarang->jenis_barang}}">
-                                    <label>Bahan</label>
-                                    <input type="text" class="form-control" name="bahan" value="{{$jenisBarang->bahan}}">
-                                    <label>Ukuran</label>
-                                    <input type="text" class="form-control" name="ukuran" value="{{$jenisBarang->ukuran}}">
                                     <label>Harga</label>
                                     <input type="text" class="form-control" name="harga" value="{{$jenisBarang->harga}}">
                                 </div>

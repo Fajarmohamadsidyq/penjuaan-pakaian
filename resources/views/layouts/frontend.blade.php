@@ -60,48 +60,39 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="#" class="logo">
+									<img src="../frontend/img/logo.png" alt="">
 								</a>
 							</div>
 						</div>
 						<!-- /LOGO -->
 
-						<!-- SEARCH BAR -->
-						<div class="col-md-6">
-							<div class="header-search">
-								<form>
-									<select class="input-select">
-										<option value="0">All Categories</option>
-									</select>
-									<input class="input" placeholder="Search here">
-									<button class="search-btn">Search</button>
-								</form>
-							</div>
-						</div>
-						<!-- /SEARCH BAR -->
-
 						<!-- ACCOUNT -->
 						<div class="col-md-3 clearfix">
 							<div class="header-ctn">
-								<!-- Cart -->
-								<div class="dropdown">
-									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-										<i class="fa fa-shopping-cart"></i>
-										<span>Your Cart</span>
+                                <!-- Wishlist -->
+								<div class= "row">
+									<a href="#">
+										<i class="#"></i>
+										<a href="">Celana</a>
 									</a>
-									<div class="cart-dropdown">
-										<div class="cart-list">
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="{{asset('image/pakaian/')}}" alt="">
-												</div>
-										</div>
-										<div class="cart-btns">
-											<a href="keranjang.index">View Cart</a>
-											<a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
-										</div>
-									</div>
 								</div>
-								<!-- /Cart -->
+								<!-- /Wishlist -->
+                                <!-- Wishlist -->
+								<div class= "row">
+									<a href="#">
+										<i class="#"></i>
+										<a href="">Baju</a>
+									</a>
+								</div>
+								<!-- /Wishlist -->
+								<!-- Wishlist -->
+								<div class= "row">
+									<a href="#">
+										<i class="#"></i>
+										<a href="">Sepatu</a>
+									</a>
+								</div>
+								<!-- /Wishlist -->
 
 								<!-- Menu Toogle -->
 								<div class="menu-toggle">
@@ -253,10 +244,10 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="newsletter">
-							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+							<p><strong>Search Here</strong></p>
 							<form>
-								<input class="input" type="email" placeholder="Enter Your Email">
-								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+								<input class="input" type="text" placeholder="search here">
+								<button class="newsletter-btn"><i class="fa fa-search"></i> Search</button>
 							</form>
 							<ul class="newsletter-follow">
 								<li>

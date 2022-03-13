@@ -20,6 +20,8 @@
                                 <th>Gambar</th>
                                 <th>Nama Pakaian</th>
                                 <th>Jumlah</th>
+                                <th>Bahan</th>
+                                <th>Ukuran</th>
                                 <th>Harga</th>
                                 <th>Total Harga</th>
                                 <th>Aksi</th>
@@ -32,6 +34,8 @@
                                 <td>{{ $pakaian->foto }}</td>
                                 <td>{{ $pakaian->nama }}</td>
                                 <td></td>
+                                <td>{{ $pakaian->bahan }}</td>
+                                <td>{{ $pakaian->ukuran }}</td>
                                 <td>{{ $pakaian->harga }}</td>
                             </tr>
                         </tbody>

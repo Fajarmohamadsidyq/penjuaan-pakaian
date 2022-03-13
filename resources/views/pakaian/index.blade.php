@@ -75,6 +75,8 @@
                                                 <th>Nama Pakaian</th>
                                                 <th>Nama Merk</th>
                                                 <th>jenis Pakaian</th>
+                                                <th>Bahan</th>
+                                                <th>Ukuran</th>
                                                 <th>Harga</th>
                                                 <th>Nama Supplier</th>
                                                 <th>Foto</th>
@@ -89,6 +91,8 @@
                                                 <td>{{ $data->nama }}</td>
                                                 <td>{{ $data->merk->nama_merk }}</td>
                                                 <td>{{ $data->jenisBarang->jenis_barang }}</td>
+                                                <td>{{ $data->bahan }}</td>
+                                                <td>{{ $data->ukuran }}</td>
                                                 <td>{{ $data->harga }}</td>
                                                 <td>{{ $data->supplier->nama }}</td>
                                                 <td><img src="{{ asset("image/pakaian/".$data->foto) }}" alt="" style="width:150px; height:150px;"

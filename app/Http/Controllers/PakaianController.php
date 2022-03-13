@@ -48,6 +48,8 @@ class PakaianController extends Controller
             'nama' => 'required',
             'id_merk' => 'required',
             'id_jenis' => 'required',
+            'bahan' => 'required',
+            'ukuran' => 'required',
             'harga' => 'required',
             'id_supplier' => 'required',
         ]);
@@ -56,6 +58,8 @@ class PakaianController extends Controller
         $pakaian->nama = $request->nama;
         $pakaian->id_merk = $request->id_merk;
         $pakaian->id_jenis = $request->id_jenis;
+        $pakaian->bahan = $request->bahan;
+        $pakaian->ukuran = $request->ukuran;
         $pakaian->harga = $request->harga;
         $pakaian->id_supplier = $request->id_supplier;
         // upload image / foto
@@ -115,6 +119,8 @@ class PakaianController extends Controller
             'nama' => 'required',
             'id_merk' => 'required',
             'id_jenis' => 'required',
+            'bahan' => 'required',
+            'ukuran' => 'required',
             'harga' => 'required',
             'id_supplier' => 'required',
         ]);
@@ -123,6 +129,8 @@ class PakaianController extends Controller
         $pakaian->nama = $request->nama;
         $pakaian->id_merk = $request->id_merk;
         $pakaian->id_jenis = $request->id_jenis;
+        $pakaian->bahan = $request->bahan;
+        $pakaian->ukuran = $request->ukuran;
         $pakaian->harga = $request->harga;
         $pakaian->id_supplier = $request->id_supplier;
         // upload image / foto

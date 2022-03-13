@@ -79,6 +79,10 @@
                                     <input type="text" class="form-control" name="id_merk" value="{{$pakaian->id_merk}}" disabled>
                                     <label>Nama Barang</label>
                                     <input type="text" class="form-control" name="id_jenis" value="{{$pakaian->id_jenis}}" disabled>
+                                    <label>Bahan</label>
+                                    <input type="text" class="form-control" name="bahan" value="{{$pakaian->bahan}}" disabled>
+                                    <label>Ukuran</label>
+                                    <input type="text" class="form-control" name="ukuran" value="{{$pakaian->ukuran}}" disabled>
                                     <label>Harga</label>
                                     <input type="text" class="form-control" name="harga" value="{{$pakaian->harga}}" disabled>
                                     <label>Nama Supplier</label>

@@ -16,8 +16,6 @@ class CreateJenisBarangsTable extends Migration
         Schema::create('jenis_barangs', function (Blueprint $table) {
             $table->id();
             $table->string('jenis_barang');
-            $table->string('bahan');
-            $table->string('ukuran');
             $table->bigInteger('harga');
             $table->timestamps();
         });

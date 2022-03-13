@@ -62,8 +62,8 @@
                                             <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                               Data supplier
-                               <a href="{{ route('jenisBarang.create')}}" class="btn btn-primary float-right">Tambah</a>
+                            Data supplier
+                            <a href="{{ route('jenisBarang.create')}}" class="btn btn-primary float-right">Tambah</a>
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
@@ -73,8 +73,6 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>jenis Barang</th>
-                                                <th>Bahan</th>
-                                                <th>Ukuran</th>
                                                 <th>Harga</th>
                                                 <th>Action</th>
                                             </tr>
@@ -85,8 +83,6 @@
                                             <tr>
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $data->jenis_barang }}</td>
-                                                <td>{{ $data->bahan }}</td>
-                                                <td>{{ $data->ukuran }}</td>
                                                 <td>{{ $data->harga }}</td>
                                                 <td>
                                                 <form action="{{route('jenisBarang.destroy',$data->id)}}" method="post">

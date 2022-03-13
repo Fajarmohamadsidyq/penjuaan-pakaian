@@ -54,7 +54,7 @@
 
                         <!-- /.col-lg-12 -->
                                         {{-- TABLE --}}
-                                             <div id="page-wrapper">
+                                            <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -63,14 +63,14 @@
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- TABLE -->
-               <div class="row">
+            <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                             Tambah Data pakaian
-                             </div>
+                            Tambah Data pakaian
+                            </div>
                             <form Action="{{ route('pakaian.store')}}" method="post" enctype="multipart/form-data">
-                             @csrf
+                            @csrf
                     <div class="panel-body">
                         <label>Nama pakaian</label>
                         <input type="text" class="form-control" name="nama">
@@ -86,6 +86,10 @@
                                     <option value="{{$data->id}}">{{$data->jenis_barang}}</option>
                                     @endforeach
                                     </select>
+                        <label>Bahan</label>
+                        <input type="text" class="form-control" name="bahan">
+                        <label>Ukuran</label>
+                        <input type="text" class="form-control" name="ukuran">
                         <label>Harga</label>
                         <input type="text" class="form-control" name="harga">
                         <label>Nama Supplier</label>
@@ -105,13 +109,13 @@
                             </div>
                     </div>
                     <div class="panel-body">
-                     <button type="reset" class="btn btn-warning">Reset</button>
-                     <button type="submit" class="btn btn-primary">Tambah</button>
+                    <button type="reset" class="btn btn-warning">Reset</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
                     </div>
-               </form>
+            </form>
             </div>
-       </div>
-  </div>
+    </div>
+</div>
                                 <!-- /.table-responsive -->
                             </div>
                             <!-- /.panel-body -->

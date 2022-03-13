@@ -54,7 +54,7 @@
 
                         <!-- /.col-lg-12 -->
                                         {{-- TABLE --}}
-               <<div id="page-wrapper">
+            <<div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -75,10 +75,6 @@
                                 <div class="panel-body">
                                     <label>Nama Barang</label>
                                     <input type="text" class="form-control" name="jenis_barang" value="{{$jenisBarang->jenis_barang}}" disabled>
-                                    <label>Bahan</label>
-                                    <input type="text" class="form-control" name="bahan" value="{{$jenisBarang->bahan}}" disabled>
-                                    <label>Ukuran</label>
-                                    <input type="text" class="form-control" name="ukuran" value="{{$jenisBarang->ukuran}}" disabled>
                                     <label>Harga</label>
                                     <input type="text" class="form-control" name="harga" value="{{$jenisBarang->harga}}" disabled>
                                 </div>

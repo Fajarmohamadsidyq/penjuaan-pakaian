@@ -39,15 +39,11 @@ class JenisBarangController extends Controller
         // validasi data
         $validate = $request->validate([
             'jenis_barang' => 'required',
-            'bahan' => 'required',
-            'ukuran' => 'required',
             'harga' => 'required',
         ]);
 
         $jenisBarang = new jenisBarang;
         $jenisBarang->jenis_barang = $request->jenis_barang;
-        $jenisBarang->bahan = $request->bahan;
-        $jenisBarang->ukuran = $request->ukuran;
         $jenisBarang->harga = $request->harga;
         $jenisBarang->save();
         return redirect()->route('jenisBarang.index');
@@ -73,7 +69,7 @@ class JenisBarangController extends Controller
      */
     public function edit($id)
     {
-         $jenisBarang = jenisBarang::findOrFail($id);
+        $jenisBarang = jenisBarang::findOrFail($id);
         return view('jenisBarang.edit', compact('jenisBarang'));
     }
 
@@ -89,15 +85,11 @@ class JenisBarangController extends Controller
          //validasi data
         $validate = $request->validate([
             'jenis_barang' => 'required',
-            'bahan' => 'required',
-            'ukuran' => 'required',
             'harga' => 'required',
         ]);
 
         $jenisBarang = jenisBarang::findOrFail($id);
         $jenisBarang->jenis_barang = $request->jenis_barang;
-        $jenisBarang->bahan = $request->bahan;
-        $jenisBarang->ukuran = $request->ukuran;
         $jenisBarang->harga = $request->harga;
         $jenisBarang->save();
         return redirect()->route('jenisBarang.index');
