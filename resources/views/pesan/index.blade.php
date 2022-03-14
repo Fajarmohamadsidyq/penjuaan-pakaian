@@ -38,7 +38,12 @@
                                     <tr>
                                         <td>Ukuran</td>
                                         <td>:</td>
-                                        <td>{{($pakaian->ukuran) }}</td>
+                                        <td>
+                                            <form method="post" action="{{ url('co', $pakaian->ukuran) }}" >
+                                            @csrf
+                                                <input type="number" name="jumlah_pesan" max="42" min="36" class="form-control" >
+                                            </form>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Jumlah Pesan</td>
@@ -46,7 +51,7 @@
                                         <td>
                                             <form method="post" action="{{ url('co', $pakaian->id) }}" >
                                             @csrf
-                                                <input type="text" name="jumlah_pesan" class="form-control" >
+                                                <input type="number" name="jumlah_pesan" class="form-control" >
                                                 <button type="submit" class="btn btn-primary mt-2"><i class="fa fa-shopping-cart"></i> Masukkan Keranjang</button>
                                             </form>
                                         </td>

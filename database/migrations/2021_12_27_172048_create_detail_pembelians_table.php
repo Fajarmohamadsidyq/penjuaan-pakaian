@@ -17,8 +17,8 @@ class CreateDetailPembeliansTable extends Migration
             $table->id();
             $table->bigInteger('id_penjualan')->unsigned();
             $table->bigInteger('id_pakaian')->unsigned();
-            $table->integer('qty');
-            $table->integer('total_harga');
+            $table->integer('jumlah');
+            $table->integer('jumlah_harga');
             //relasi
             $table->foreign('id_penjualan')->references('id')
                 ->on('penjualans');
